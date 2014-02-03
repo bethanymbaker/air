@@ -6,9 +6,9 @@ import com.github.jmkgreen.morphia.Morphia;
 import com.github.jmkgreen.morphia.dao.BasicDAO;
 import com.mongodb.MongoClient;
 
-public class AnnotationContainerDAO extends BasicDAO<AnnotationContainer, ObjectId> {
+public class AnnotationsDAO extends BasicDAO<Annotations, ObjectId> {
 
-	protected AnnotationContainerDAO(MongoClient mongo, Morphia morphia, String dbName) {
+	protected AnnotationsDAO(MongoClient mongo, Morphia morphia, String dbName) {
 		super(mongo, morphia, dbName);
 	}
 

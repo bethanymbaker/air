@@ -16,14 +16,28 @@ public class Demo {
 		MongoClient mongo = new MongoClient();
 		Morphia morphia = new Morphia();
 
-		AnnotationContainerDAO acDAO = new AnnotationContainerDAO(mongo, morphia, dbName);
+		AnnotationsDAO acDAO = new AnnotationsDAO(mongo, morphia, dbName);
 		
-		AnnotationContainer ac = new AnnotationContainer();
+		Annotations ac = new Annotations();
+		
+		RectangleAnnotation ra = new RectangleAnnotation();
+		ra.setType("heart");
+		
+		ac.addAnnotation(ra);
+		
+		
+		PointAnnotation pa = new PointAnnotation();
+		ac.addAnnotation(pa);
 		
 		acDAO.save(ac);
 		
-		ObjectId newId = ac.getId();
-		System.out.println("id = " + newId.toString());
+		ObjectId id = ac.getId();
+		System.out.println("id = " + id.toString());
+
+		Annotations newAc = acDAO.get(id);
+		id = newAc.getId();
+		System.out.println("newId = " + id.toString());
+		
 		
 
 	}
